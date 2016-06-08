@@ -37,7 +37,7 @@ public class ventanaPpal extends JFrame {
 	private JRadioButton rdbtnFuerzaBruta, rdbtnBoyermoore, rdbtnKarprabin;
 	private JLabel labelTiempo;
 	private TextArea textArea;
-	private ButtonGroup BGjradio = new ButtonGroup();
+	private ButtonGroup BGjradio = new ButtonGroup(); //nuevo atributo
 
 	/**
 	 * Launch the application.
