@@ -178,6 +178,5 @@ public class ventanaPpal extends JFrame {
 		                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
 		    }
 //		  return texto;//El texto se almacena en el JTextArea
-		  //ASDasdASD
 	}
 }
