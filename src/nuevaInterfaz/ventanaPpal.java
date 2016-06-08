@@ -1,5 +1,6 @@
 package nuevaInterfaz;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,23 +11,22 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.TextArea;
 
 public class ventanaPpal extends JFrame {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private String texto = new String("");
 	private String titleFile = new String("");
 	private JPanel contentPane;
@@ -35,7 +35,7 @@ public class ventanaPpal extends JFrame {
 	private JButton btnBuscarArchivo;
 	private JRadioButton rdbtnFuerzaBruta, rdbtnBoyermoore, rdbtnKerprabin;
 	private JLabel labelTiempo;
-	private JTextArea textArea;
+	private TextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -122,10 +122,6 @@ public class ventanaPpal extends JFrame {
 		btnBuscar.setBounds(476, 112, 89, 23);
 		contentPane.add(btnBuscar);
 		
-		textArea = new JTextArea();
-		textArea.setBounds(10, 162, 604, 243);
-		contentPane.add(textArea);
-		
 		JLabel lblTiempoDeBusqueda = new JLabel("Tiempo de busqueda:");
 		lblTiempoDeBusqueda.setBounds(10, 416, 106, 14);
 		contentPane.add(lblTiempoDeBusqueda);
@@ -133,6 +129,10 @@ public class ventanaPpal extends JFrame {
 		labelTiempo = new JLabel("...");
 		labelTiempo.setBounds(126, 416, 149, 14);
 		contentPane.add(labelTiempo);
+		
+		textArea = new TextArea();
+		textArea.setBounds(10, 160, 604, 250);
+		contentPane.add(textArea);
 	}
 	
 	public void setTextArea(String texto){
@@ -177,7 +177,6 @@ public class ventanaPpal extends JFrame {
 		           "\nNo se ha encontrado el archivo",
 		                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
 		    }
-		  //asdasd
-		  //return texto;//El texto se almacena en el JTextArea
+//		  return texto;//El texto se almacena en el JTextArea
 	}
 }
