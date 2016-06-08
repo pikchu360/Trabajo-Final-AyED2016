@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -33,9 +34,10 @@ public class ventanaPpal extends JFrame {
 	private JTextField tfArchivo;
 	private JTextField tfPatron;
 	private JButton btnBuscarArchivo;
-	private JRadioButton rdbtnFuerzaBruta, rdbtnBoyermoore, rdbtnKerprabin;
+	private JRadioButton rdbtnFuerzaBruta, rdbtnBoyermoore, rdbtnKarprabin;
 	private JLabel labelTiempo;
 	private TextArea textArea;
+	private ButtonGroup BGjradio = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -102,10 +104,14 @@ public class ventanaPpal extends JFrame {
 		rdbtnBoyermoore.setBounds(342, 69, 106, 23);
 		contentPane.add(rdbtnBoyermoore);
 		
-		rdbtnKerprabin = new JRadioButton("Kerp-Rabin");
-		rdbtnKerprabin.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rdbtnKerprabin.setBounds(476, 69, 89, 23);
-		contentPane.add(rdbtnKerprabin);
+		rdbtnKarprabin = new JRadioButton("Kerp-Rabin");
+		rdbtnKarprabin.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdbtnKarprabin.setBounds(476, 69, 89, 23);
+		contentPane.add(rdbtnKarprabin);
+		
+		BGjradio.add(rdbtnFuerzaBruta);
+		BGjradio.add(rdbtnBoyermoore);
+		BGjradio.add(rdbtnKarprabin);
 		
 		JLabel lblPatronDeBusqueda = new JLabel("Patron de Busqueda:");
 		lblPatronDeBusqueda.setFont(new Font("Tahoma", Font.BOLD, 11));
