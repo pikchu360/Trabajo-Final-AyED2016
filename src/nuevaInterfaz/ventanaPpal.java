@@ -177,6 +177,7 @@ public class ventanaPpal extends JFrame {
 		           "\nNo se ha encontrado el archivo",
 		                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
 		    }
-//		  return texto;//El texto se almacena en el JTextArea
+		  //asdasd
+		  //return texto;//El texto se almacena en el JTextArea
 	}
 }
