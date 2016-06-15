@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import metodosBusquedas.ClsSearchMethods;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -26,6 +30,8 @@ public class ventanaPpal extends JFrame {
 
 	//Attributes 
 	private static final long serialVersionUID = 1L;
+	
+	private ClsSearchMethods buscar = new ClsSearchMethods();
 	private String texto = new String("");
 	private String titleFile = new String("");
 	private JPanel contentPane;
@@ -92,6 +98,7 @@ public class ventanaPpal extends JFrame {
 		rdbtnFuerzaBruta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		rdbtnFuerzaBruta.setBounds(204, 69, 97, 23);
 		contentPane.add(rdbtnFuerzaBruta);
+		rdbtnFuerzaBruta.setSelected(true);
 		
 		rdbtnBoyermoore = new JRadioButton("Boyer-Moore");
 		rdbtnBoyermoore.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -120,6 +127,20 @@ public class ventanaPpal extends JFrame {
 		JButton btnBuscar = new JButton("BUSCAR");
 		btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnBuscar.setBounds(476, 112, 89, 23);
+		btnBuscar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				buscar.setTexto(textArea.getText());
+				buscar.setPatron(tfPatron.getText());
+				
+				if(rdbtnFuerzaBruta.isSelected()){
+					buscar.buscarFuerzaBruta();
+					
+				}
+				
+			}
+		});
 		contentPane.add(btnBuscar);
 		
 		JLabel lblTiempoDeBusqueda = new JLabel("Tiempo de busqueda:");
@@ -131,10 +152,13 @@ public class ventanaPpal extends JFrame {
 		contentPane.add(labelTiempo);
 		
 		textArea = new TextArea();
+		textArea.setEditable(false);
 		textArea.setBounds(10, 160, 604, 250);
 		contentPane.add(textArea);
 	}
 	
+	
+	//general methods	
 	public void setTextArea(String texto){
 		textArea.setText(texto);
 	}
@@ -143,40 +167,37 @@ public class ventanaPpal extends JFrame {
 		tfArchivo.setText(texto);
 	}
 	
-//	private String abrirArchivo() {
 	private void abrirArchivo() {
-		  String aux="";   
-//		  String texto = "";
-		  try
-		  {
-		   /**llamamos el metodo que permite cargar la ventana*/
-		   JFileChooser file=new JFileChooser();
-		   file.showOpenDialog(this);
-		   /**abrimos el archivo seleccionado*/
-		   File abre = file.getSelectedFile();
+		String aux="";   
+		try{
+			/**llamamos el metodo que permite cargar la ventana*/
+			JFileChooser file=new JFileChooser();
+   
+			FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt","docx","pdf");
+			file.setFileFilter(filtro);
 		   
-		   //obtengo nombre del archivo
-		   titleFile = abre.getName();
+			int status=file.showOpenDialog(null);
+			//file.showOpenDialog(this);
 		   
-		   /**recorremos el archivo, lo leemos para plasmarlo
-		   *en el area de texto*/
-		   if(abre!=null)
-		   {     
-		      FileReader archivos=new FileReader(abre);
-		      BufferedReader lee=new BufferedReader(archivos);
-		      while((aux=lee.readLine())!=null)
-		      {
-		         texto+= aux+ "\n";
-		      }
-		         lee.close();
-		    }    
-		   }
-		   catch(IOException ex)
-		   {
-		     JOptionPane.showMessageDialog(null,ex+"" +
+			/**abrimos el archivo seleccionado*/
+			File abre = file.getSelectedFile();
+		   
+			/**recorremos el archivo, lo leemos para plasmarlo en el area de texto*/
+			if(status == JFileChooser.APPROVE_OPTION){   
+				//get title the file
+				titleFile = abre.getName();
+				FileReader archivos=new FileReader(abre);
+				BufferedReader lee=new BufferedReader(archivos);
+				while((aux=lee.readLine())!=null){
+					texto+= aux+ "\n";
+				}
+		        lee.close();
+		    }
+		}catch(IOException ex){
+			JOptionPane.showMessageDialog(null,ex+"" +
 		           "\nNo se ha encontrado el archivo",
 		                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-		    }
-//		  return texto;//El texto se almacena en el JTextArea
+		}
 	}
+	
 }
