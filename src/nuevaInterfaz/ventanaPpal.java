@@ -1,6 +1,5 @@
 package nuevaInterfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,13 +10,10 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,7 +23,9 @@ import java.awt.event.ActionEvent;
 import java.awt.TextArea;
 
 public class ventanaPpal extends JFrame {
-	
+
+	//Attributes 
+	private static final long serialVersionUID = 1L;
 	private String texto = new String("");
 	private String titleFile = new String("");
 	private JPanel contentPane;
@@ -39,9 +37,7 @@ public class ventanaPpal extends JFrame {
 	private TextArea textArea;
 	private ButtonGroup BGjradio = new ButtonGroup(); //nuevo atributo
 
-	/**
-	 * Launch the application.
-	 */
+	//main window
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,9 +51,7 @@ public class ventanaPpal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	// Create the frame.
 	public ventanaPpal() {
 		setTitle("Busqueda de Texto");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
