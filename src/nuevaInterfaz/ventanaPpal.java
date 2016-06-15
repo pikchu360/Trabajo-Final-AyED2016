@@ -136,6 +136,7 @@ public class ventanaPpal extends JFrame {
 				
 				if(rdbtnFuerzaBruta.isSelected()){
 					buscar.buscarFuerzaBruta();
+					//Va el metodo resaltador
 					
 				}
 				
